@@ -1,0 +1,30 @@
+<template>
+    <div>
+        <lightning-record-edit-form record-id={recordId} object-api-name={objectApiName} onsuccess={handleSuccess}>
+            <!-- MULTIPLE SECTIONS -->
+            <lightning-messages></lightning-messages>
+            <template for:each={sectionsMap} for:item="secInfo"> <!-- each section -->
+                <h3 key={secInfo.title} class="slds-m-top_x-small slds-m-bottom_small slds-p-top_small slds-p-bottom_small slds-p-left_small">
+                    {secInfo.title}
+                </h3>
+
+                <lightning-layout key={secInfo.title} multiple-rows="true" horizontal-align="spread">
+                    <template for:each={secInfo.fields} for:item="fld">
+                        <lightning-layout-item key={fld} flexibility="auto" size="5">
+                            <lightning-input-field field-name={fld}></lightning-input-field>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </template>
+
+            <!-- Footer for the edit form to show the Save and Cancel button -->
+            <div class="slds-align_absolute-center slds-p-around_x-small slds-m-top_small">
+                <lightning-button class="slds-m-right_small" variant="neutral" type="submit" name="cancel" label="Cancel" onclick={handleEditFormCancel}>
+                </lightning-button>
+
+                <lightning-button variant="brand" type="submit" name="update" label="Update">
+                </lightning-button>
+            </div>
+        </lightning-record-edit-form>
+    </div>
+</template>

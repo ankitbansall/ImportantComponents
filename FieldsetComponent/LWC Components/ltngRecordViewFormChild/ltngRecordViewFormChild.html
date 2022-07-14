@@ -1,0 +1,29 @@
+<template>
+    <div>
+        <lightning-record-view-form record-id={recordId} object-api-name={objectApiName}>
+            <!-- MULTIPLE SECTIONS -->
+            <template for:each={sectionsMap} for:item="secInfo"> <!-- each section -->
+                <h3 key={secInfo.title} class="slds-m-top_x-small slds-m-bottom_small slds-p-top_small slds-p-bottom_small slds-p-left_small">
+                    {secInfo.title}
+                </h3>
+
+                <lightning-layout key={secInfo.title} multiple-rows="true" horizontal-align="spread">
+                    <template for:each={secInfo.fields} for:item="fld"> <!-- each field in a section -->
+                        <lightning-layout-item key={fld} flexibility="auto" size="5">
+                            <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                                <lightning-output-field field-name={fld}>
+                                    <template if:true={enableInlineEdit}>
+                                        <template if:false={enableReadOnly}>
+                                            <lightning-button-icon icon-name="utility:edit" alternative-text="Edit" variant="bare" onclick={handleInlineEdit}></lightning-button-icon>
+                                        </template>
+                                    </template>
+                                </lightning-output-field>
+                            </div>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </template>
+
+        </lightning-record-view-form>
+    </div>
+</template>

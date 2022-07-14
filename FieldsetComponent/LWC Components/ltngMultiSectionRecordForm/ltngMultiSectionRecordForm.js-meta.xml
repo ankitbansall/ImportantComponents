@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>47.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Multi Section Record Form</masterLabel>
+    <description>Use this to show a record form with multiple sections that pull fields from field sets</description>
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property label="Sectional Details" name="sectionToFieldsetMap" placeholder="Section1: fieldset1; Section2: fieldset2" type="String" required="true"/>
+            <property label="Enable Inline Edit?" name="enableInlineEdit" type="Boolean"/>
+            <property label="Read Only" name="enableReadOnly" type="Boolean" default="false"/>
+            <property label="Actions in Header" name="actionInHeader" type="Boolean" default="false"/>
+            <property label="Actions in Footer" name="actionInFooter" type="Boolean" default="false"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
